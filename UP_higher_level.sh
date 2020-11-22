@@ -15,10 +15,9 @@ runs=$1
 
 #paths
 rootdir=/Users/epsy/Documents/Update_protect
-outdir=$rootdir
-script_path=$rootdir/scripts/mri
+script_path=$rootdir/scripts/preprocessing_pipeline_fmri
 subj_path_in=$rootdir/$subj
-subj_path_out=$outdir/$subj
+subj_path_out=$rootdir/$subj
 
 # FSL will try to transform the data to standard space using the registration files.
 # we have already completed this transformation so we will provide empty matrices.  

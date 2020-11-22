@@ -10,10 +10,9 @@
 
 #paths
 rootdir=/Users/epsy/Documents/Update_protect
-outdir=$rootdir
-script_path=$rootdir/scripts/mri
+script_path=$rootdir/scripts/preprocessing_pipeline_fmri
 subj_path_in=$rootdir/$subj
-subj_path_out=$outdir/$subj
+subj_path_out=$rootdir/$subj 
 
 #parameters
 subj=$1

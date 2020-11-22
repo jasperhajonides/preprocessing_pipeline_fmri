@@ -14,14 +14,14 @@ runs=$1
 
 #paths
 rootdir=/Users/epsy/Documents/Update_protect
-outdir=$rootdir
-script_path=$rootdir/scripts/mri
+script_path=$rootdir/scripts/preprocessing_pipeline_fmri
 subj_path_in=$rootdir/$subj
-subj_path_out=$outdir/$subj
+subj_path_out=$rootdir/$subj
 
 
 for (( r = 1; r < ${#runs[@]}; r++)) do
     echo "$r"
+    
     #define run specific variables
     run=${runs[$r]}
     mkdir $subj_path_out/func/$run

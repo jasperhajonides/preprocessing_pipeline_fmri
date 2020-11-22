@@ -14,7 +14,7 @@
 # input:
 #   - functional data in $rootdir/$subj/func/UP_001.feat
 #   - FSL FAST basal ganglia mask
-#   - probabilistic visual mask atlas $outdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz
+#   - probabilistic visual mask atlas $rootdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz
 #   - hand classification of ICA components or trained FIX set or it will take an 
 #       existing FSL FIX dataset that you can download online (see FSL FIX page)
 #   - (pulvinar mask, manually edited: $subj_path_out/mask/highres_subcortex_adjusted.nii.gz)
@@ -29,10 +29,9 @@ runs=$1
 
 #paths
 rootdir=/Users/epsy/Documents/Update_protect
-outdir=$rootdir
-script_path=$rootdir/scripts/mri
+script_path=$rootdir/scripts/preprocessing_pipeline_fmri
 subj_path_in=$rootdir/$subj
-subj_path_out=$outdir/$subj
+subj_path_out=$rootdir/$subj
 
 #if pulvinar(+LGN mask) is present
 file=$subj_path_out/mask/highres_subcortex_adjusted.nii.gz
@@ -59,13 +58,13 @@ fi
 
 # # fix visual masks
 applywarp \
---in=$outdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz \
+--in=$rootdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz \
 --ref=$subj_path_out/func/run-01/UP_001.feat/reg/example_func.nii.gz \
 --premat=$subj_path_out/func/run-01/UP_001.feat/reg/standard2example_func.mat \
 --out=$subj_path_out/mask/example_func_Prob_atlas_continuous.nii.gz
 
 applywarp \
---in=$outdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz \
+--in=$rootdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both.nii.gz \
 --ref=$subj_path_out/func/run-01/UP_001.feat/reg/example_func.nii.gz \
 --premat=$subj_path_out/func/run-01/UP_001.feat/reg/standard2example_func.mat \
 --interp=nn --out=$subj_path_out/mask/example_func_Prob_atlas.nii.gz
@@ -89,10 +88,10 @@ for (( r = 1; r < ${#runs[@]}; r++)) do
         -o ../regfiltered_func_data.nii.gz \
         -d ./filtered_func_data.ica/melodic_mix \
         -f $removable_components
-    elif [-e "$outdir/fix_60runs.Rdata"]; then
+    elif [-e "$rootdir/fix_60runs.Rdata"]; then
         echo "Applying Fix"
         #use marked data to classify noise and signal components
-        fix -c $run_path/UP_001.feat $outdir/fix_60runs.Rdata 20
+        fix -c $run_path/UP_001.feat $rootdir/fix_60runs.Rdata 20
         fix -a $run_path/UP_001.feat/fix4melview....txt -m
     fi
 
@@ -142,7 +141,7 @@ for (( r = 1; r < ${#runs[@]}; r++)) do
     #apply 4mm smoothing within visual mask (R+L)
     3dBlurInMask \
     -FWHM 4 \
-    -mask $outdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both_example_func_dim.nii.gz \
+    -mask $rootdir/standard/ProbAtlas_v4/subj_vol_all/maxprob_vol_both_example_func_dim.nii.gz \
     -preserve \
     -prefix $run_path/norm_data_6_visual_smooth.nii.gz \
     $run_path/norm_data_5_flirt.nii.gz
