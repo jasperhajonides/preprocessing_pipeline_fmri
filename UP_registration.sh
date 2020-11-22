@@ -21,7 +21,7 @@ subj_path_out=$rootdir/$subj
 
 for (( r = 1; r < ${#runs[@]}; r++)) do
     echo "$r"
-    
+
     #define run specific variables
     run=${runs[$r]}
     mkdir $subj_path_out/func/$run
@@ -43,9 +43,9 @@ for (( r = 1; r < ${#runs[@]}; r++)) do
     -e "s|RUN|${run}|g" \
     -e "s|SUBJECT|${subj}|g" \
     -e "s|NAME|${nii_name}|g" \
-    $script_path/fsf_files/feat_pipeline_preprocessing_003.fsf > $script_path/fsf_files/${subj}_${runs[$r]}_design_prepFeat.fsf
+    $script_path/feat_pipeline_preprocessing_003.fsf > $rootdir/scripts/fsf_files/${subj}_${runs[$r]}_design_prepFeat.fsf
           
-    feat $script_path/fsf_files/${subj}_${runs[$r]}_design_prepFeat.fsf
+    feat $rootdir/scripts/fsf_files/${subj}_${runs[$r]}_design_prepFeat.fsf
             
 
 done

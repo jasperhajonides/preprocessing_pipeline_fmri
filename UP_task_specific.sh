@@ -155,9 +155,9 @@ for (( r = 1; r < ${#runs[@]}; r++)) do
     sed -e "s|VOLUMES|${nr_images}|g" \
         -e "s|RUN|${run}|g" \
         -e "s|SUBJECT|${subj}|g" \
-        $script_path/fsf_files/stimulus_GLM_localiser_2stim.fsf > $script_path/fsf_files/${subj}_${runs[$r]}_Stim_GLM.fsf
+        $script_path/stimulus_GLM_localiser_2stim.fsf > $rootdir/scripts/fsf_files/${subj}_${runs[$r]}_Stim_GLM.fsf
     
-    feat $script_path/fsf_files/${subj}_${runs[$r]}_Stim_GLM.fsf
+    feat $rootdir/scripts/fsf_files/${subj}_${runs[$r]}_Stim_GLM.fsf
 
 done
 

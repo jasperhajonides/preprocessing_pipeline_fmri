@@ -31,6 +31,6 @@ done
 # ## higher level FEAT
 echo "Running higher level FEAT"
 sed -e "s|SUBJECT|$subj|g" \
-$script_path/higher_level_template_stimpres.fsf > $script_path/fsf_files/${subj}_higher_level_stimpres.fsf
+$script_path/higher_level_template_stimpres.fsf > $rootdir/scripts/fsf_files/${subj}_higher_level_stimpres.fsf
 echo "higher level fsf created."
-feat $script_path/fsf_files/${subj}_higher_level_stimpres.fsf
+feat $rootdir/scripts/fsf_files/${subj}_higher_level_stimpres.fsf
