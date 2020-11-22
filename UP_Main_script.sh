@@ -29,9 +29,6 @@ for ((s = 0; s < ${#subjects[@]}; s++ )) do
     source $script_path/UP_pulvinar.sh $subj
 
     # Task specific preprocessing
-    # - delineated pulvinar + LGN masks
-    # - either FIX trained or hand classified txt file
-    # - event timings in ./behavioural/SUBJECT/....txt in three column format. 
     source $script_path/UP_task_specific.sh $subj $runs
 
     # higher level
