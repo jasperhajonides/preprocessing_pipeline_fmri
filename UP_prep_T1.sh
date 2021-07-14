@@ -12,9 +12,9 @@
 # Hajonides 11/2020
 
 #paths
-rootdir=/Users/epsy/Documents/VMS_fMRI_EEG
+rootdir=/Volumes/ELEMENTS/VMS_fMRI_EEG
 script_path=$rootdir/scripts/preprocessing_pipeline_fmri
-subj_path_in=$rootdir/mri/$subj
+subj_path_in=/Volumes/ELEMENTS/BIDS_VMS/mri/$subj
 subj_path_out=$rootdir/mri/$subj
 
 #parameters
