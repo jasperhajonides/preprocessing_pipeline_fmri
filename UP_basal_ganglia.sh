@@ -9,10 +9,10 @@
 
 
 #paths
-rootdir=/Users/epsy/Documents/Update_protect
+rootdir=/Users/epsy/Documents/VMS_fMRI_EEG
 script_path=$rootdir/scripts/preprocessing_pipeline_fmri
-subj_path_in=$rootdir/$subj
-subj_path_out=$rootdir/$subj 
+subj_path_in=$rootdir/mri/$subj
+subj_path_out=$rootdir/mri/$subj 
 
 #parameters
 subj=$1

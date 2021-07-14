@@ -14,17 +14,17 @@ runs=$1
 
 
 #paths
-rootdir=/Users/epsy/Documents/Update_protect
+rootdir=/Users/epsy/Documents/VMS_fMRI_EEG
 script_path=$rootdir/scripts/preprocessing_pipeline_fmri
-subj_path_in=$rootdir/$subj
-subj_path_out=$rootdir/$subj
+subj_path_in=$rootdir/mri/$subj
+subj_path_out=$rootdir/mri/$subj
 
 # FSL will try to transform the data to standard space using the registration files.
 # we have already completed this transformation so we will provide empty matrices.  
 for (( r = 1; r < ${#runs[@]}; r++)) do
     run=${runs[$r]}
     echo "Copy reg files $run."
-    cp -r $rootdir/standard/reg_standard $subj_path_in/func/$run/GLM_001.feat/reg
+    cp -r $rootdir/mri/standard/reg_standard $subj_path_in/func/$run/GLM_001.feat/reg
     cp -r $subj_path_in/func/$run/UP_001.feat/reg/highres.nii.gz $subj_path_in/func/$run/GLM_001.feat/reg/highres.nii.gz
 done
 

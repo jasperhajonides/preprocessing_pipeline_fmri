@@ -12,16 +12,17 @@
 # Hajonides 11/2020
 
 #paths
-rootdir=/Users/epsy/Documents/Update_protect
+rootdir=/Users/epsy/Documents/VMS_fMRI_EEG
 script_path=$rootdir/scripts/preprocessing_pipeline_fmri
-subj_path_in=$rootdir/$subj
-subj_path_out=$rootdir/$subj
+subj_path_in=$rootdir/mri/$subj
+subj_path_out=$rootdir/mri/$subj
 
 #parameters
 subj=$1
 
 #standard processing T1 (modify grep string to locate file)
- echo "We'll process $name_anat"
+name_anat="$(cd $subj_path_in/anat/; ls | grep "*.nii" | tail -n 1)"
+echo "We'll process $name_anat"
 echo $name_anat
 
 # reduce FOV 

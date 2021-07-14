@@ -5,12 +5,13 @@
 
 
 #paths
-rootdir=/Users/epsy/Documents/Update_protect
+rootdir=/Users/epsy/Documents/VMS_fMRI_EEG
+#put scripts here:
 script_path=$rootdir/scripts/preprocessing_pipeline_fmri
 
 # subjects and runs to loop over
-subjects=(sub-02) 
-runs=(unprocessed run-01 run-02 run-03 run-04 run-05 run-06 run-07 run-08)
+subjects=(sub-04) 
+runs=(unprocessed run-01 run-02 run-03 run-04 run-05 run-06 run-07 run-08 run-09 run-10 run-11 run-12) #unprocessed is a filler
 
 
 #loop over subjects
